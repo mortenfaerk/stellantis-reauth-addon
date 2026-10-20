@@ -1,0 +1,42 @@
+name: Stellantis auto-reauth
+version: "0.2.3"
+slug: stellantis_reauth
+description: Renews the Stellantis Vehicles integration login (MyPeugeot, MyCitroën, MyDS, MyOpel, MyVauxhall) automatically
+url: https://github.com/mortenfaerk/stellantis-reauth-addon
+arch:
+  - amd64
+  - aarch64
+init: false
+startup: application
+boot: auto
+homeassistant_api: true
+hassio_api: true
+options:
+  accounts: []
+  notify_service: ""
+  sms_timeout_minutes: 15
+  notify_on_success: true
+  messages: {}
+schema:
+  accounts:
+    - email: email
+      password: password
+      pin: password?
+      brand: list(MyPeugeot|MyCitroen|MyDS|MyOpel|MyVauxhall)?
+      country: list(AR|AT|AU|BE|BG|BN|BR|CH|CL|CO|CR|CY|CZ|DE|DK|DZ|EC|EE|ES|FI|FR|GB|GF|GP|GR|HR|HU|IE|IN|IR|IS|IT|JP|KR|LB|LT|LU|LV|MA|MQ|MT|MX|MY|NC|NL|NO|NZ|PE|PH|PL|PT|PY|RE|RO|RS|RU|SE|SG|SI|SK|TH|TN|TR|TW|UA|UY|ZA)?
+  notify_service: str?
+  sms_timeout_minutes: int(5,60)
+  notify_on_success: bool
+  messages:
+    title: str?
+    renewed: str?
+    renewed_manual: str?
+    renewed_sms: str?
+    sms_prompt: str?
+    sms_action: str?
+    sms_invalid: str?
+    manual: str?
+    failed: str?
+    reason_no_account: str?
+    reason_rate_limited: str?
+    reason_no_sms: str?

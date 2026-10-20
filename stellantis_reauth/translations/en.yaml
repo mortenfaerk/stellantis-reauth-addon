@@ -1,0 +1,87 @@
+configuration:
+  accounts:
+    name: Stellantis accounts
+    description: >-
+      The login(s) for your Stellantis Vehicles integration. Add one account per
+      integration entry. With a single account and a single entry, brand and
+      country can be left empty.
+    fields:
+      email:
+        name: Email
+        description: The email you log in to the brand app with (MyPeugeot, MyCitroën, MyDS, MyOpel or MyVauxhall).
+      password:
+        name: Password
+        description: The password for that account.
+      pin:
+        name: App PIN
+        description: >-
+          The PIN code from the brand app. Only needed if remote commands are
+          enabled in the integration; used together with the SMS code when a
+          full re-login is required.
+      brand:
+        name: Brand
+        description: >-
+          The brand app this account belongs to. Required when you have more
+          than one account or integration entry.
+      country:
+        name: Country
+        description: >-
+          The country chosen when the integration entry was set up. Required when
+          you have more than one account or integration entry.
+  notify_service:
+    name: Phone notification target
+    description: >-
+      Leave empty to notify every phone with the Home Assistant companion app.
+      To use a single phone, enter its notify service without "notify.", for
+      example mobile_app_my_phone.
+  sms_timeout_minutes:
+    name: SMS code timeout (minutes)
+    description: >-
+      How long to wait for you to reply with the SMS code before giving up. The
+      re-login is then left for you to finish under Settings → Devices &
+      services.
+  notify_on_success:
+    name: Notify on success
+    description: Also send a phone notification when a login was renewed successfully, not only when something needs your attention.
+  messages:
+    name: Notification texts
+    description: >-
+      Optional. Replace any notification text with your own wording or
+      translation. Leave a field empty to use the default shown below it.
+    fields:
+      title:
+        name: "Notification title"
+        description: "Title of every phone notification. Default: Stellantis login"
+      renewed:
+        name: "Renewed automatically"
+        description: "Sent when a login was renewed without an SMS. Placeholders: {name}. Default: {name}: login renewed automatically (no SMS)."
+      renewed_manual:
+        name: "Renewed on request"
+        description: "Sent when a renewal you requested (event stellantis_reauth_renew) succeeded. Placeholders: {name}. Default: {name}: login renewed on request (no SMS)."
+      renewed_sms:
+        name: "Renewed with SMS code"
+        description: "Sent when a full re-login with the SMS code succeeded. Placeholders: {name}. Default: {name}: login renewed with the SMS code."
+      sms_prompt:
+        name: "SMS code request"
+        description: "Asks you to reply with the SMS code Stellantis just sent. Placeholders: {name}. Default: {name}: Stellantis has sent an SMS code. Reply to this notification with the code to renew the login."
+      sms_action:
+        name: "Reply button label"
+        description: "Label of the reply button on the SMS code request. Default: Enter SMS code"
+      sms_invalid:
+        name: "Invalid SMS code"
+        description: "Sent when your reply contained no digits. Default: That was not a valid code. Reply with the digits from the SMS."
+      manual:
+        name: "Manual login needed"
+        description: "Sent when the add-on can't renew the login itself. Placeholders: {name}, {reason}. Default: {name} needs to log in again and it can't be done automatically: {reason}. Finish it under Settings → Devices & services."
+      failed:
+        name: "Login failed"
+        description: "Sent when an automatic login attempt failed. Placeholders: {name}, {error}. Default: {name}: automatic login failed: {error}"
+      reason_no_account:
+        name: "Reason: no matching account"
+        description: "Inserted as {reason} in the manual-login text when no account matches the integration entry. Default: no matching account in the add-on configuration"
+      reason_rate_limited:
+        name: "Reason: SMS attempted recently"
+        description: "Inserted as {reason} in the manual-login text when an SMS re-login was already tried in the last 6 hours. Default: an SMS reauth was already attempted in the last 6 hours"
+      reason_no_sms:
+        name: "Reason: SMS not possible"
+        description: "Inserted as {reason} in the manual-login text when an SMS code is needed but no PIN or phone is available. Default: remote commands need an SMS code, but no PIN or phone notification target is available"
