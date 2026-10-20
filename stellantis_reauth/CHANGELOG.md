@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.4
+
+- Icon and logo.
+
 ## 0.2.3
 
 - Every notification text can be replaced in the configuration (own wording or

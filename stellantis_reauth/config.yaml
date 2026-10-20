@@ -1,5 +1,5 @@
 name: Stellantis auto-reauth
-version: "0.2.3"
+version: "0.2.4"
 slug: stellantis_reauth
 description: Renews the Stellantis Vehicles integration login (MyPeugeot, MyCitroën, MyDS, MyOpel, MyVauxhall) automatically
 url: https://github.com/mortenfaerk/stellantis-reauth-addon
